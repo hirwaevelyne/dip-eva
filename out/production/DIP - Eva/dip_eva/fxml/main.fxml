@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+        maxHeight="-Infinity"
+        maxWidth="-Infinity"
+        minHeight="-Infinity"
+        minWidth="-Infinity"
+        prefHeight="600"
+        prefWidth="800"
+        xmlns="http://javafx.com/javafx/null"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="dip_eva.MainController">
+    <top>
+        <MenuBar
+                BorderPane.alignment="CENTER">
+            <menus>
+                <Menu
+                        mnemonicParsing="false"
+                        text="File">
+                    <items>
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#newAction"
+                                text="New" />
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#saveAction"
+                                text="Save" />
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#exitAction"
+                                text="Exit" />
+                    </items>
+                </Menu>
+                <Menu
+                        mnemonicParsing="false"
+                        text="Edit">
+                    <items>
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#backToOriginalAction"
+                                text="Back to Original" />
+                    </items>
+                </Menu>
+                <Menu
+                        mnemonicParsing="false"
+                        text="Tools">
+                    <items>
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#grayscaleConversionAction"
+                                text="Convert to Grayscale" />
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#hsvConversionAction"
+                                text="Convert to HSV" />
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#segmentImageAction"
+                                text="Segment Image" />
+                        <SeparatorMenuItem
+                                mnemonicParsing="false" />
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#compressAction"
+                                text="Compress" />
+                    </items>
+                </Menu>
+                <Menu
+                        mnemonicParsing="false"
+                        text="Filter">
+                    <items>
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#gaussianAction"
+                                text="Gaussian Filter" />
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#weightedAverageAction"
+                                text="Weighted Average Filter" />
+                        <SeparatorMenuItem
+                                mnemonicParsing="false" />
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#morphErodeAction"
+                                text="Morphology Operator Eroding" />
+                        <MenuItem
+                                mnemonicParsing="false"
+                                onAction="#morphDilateAction"
+                                text="Morphology Operator Dilatation" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <AnchorPane prefHeight="575.0" prefWidth="530.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imageView" fitHeight="540.0" fitWidth="516.0" layoutX="17.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+            <Separator layoutX="558.0" orientation="VERTICAL" prefHeight="575.0" AnchorPane.rightAnchor="0.0" />
+         </children></AnchorPane>
+    </center>
+   <right>
+      <VBox prefHeight="575.0"
+            prefWidth="236.0"
+            BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Hue">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></Label>
+            <Slider fx:id="hue" max="1.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></Slider>
+            <Label text="Saturation">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </Label>
+            <Slider fx:id="saturation" max="1.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></Slider>
+            <Label text="Brightness">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </Label>
+            <Slider fx:id="brightness" max="1.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin></Slider>
+            <Label text="Contrast">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </Label>
+            <Slider fx:id="contrast" max="1.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </Slider>
+            <LineChart
+                    fx:id="chartHistogram"
+                    prefHeight="174.0"
+                    prefWidth="219.0"
+                    title="Histogram">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis
+                        label="Number of Pixel"
+                        side="LEFT" />
+              </yAxis>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </LineChart>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
+   </right>
+</BorderPane>
